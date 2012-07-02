@@ -18,6 +18,11 @@ namespace whois
     
     public partial class Whois : Form
     {
+        /// <summary>
+        /// Проверяет, может ли строка переведена в тип int
+        /// </summary>
+        /// <param name="val">Строка</param>
+        /// <returns>bool</returns>
         bool IsInt(string val)
         {
             bool result = false;
@@ -29,6 +34,11 @@ namespace whois
             catch { }
             return result;
         }
+        /// <summary>
+        /// Проверяем является ли IP-адресом
+        /// </summary>
+        /// <param name="val">строка с адресом</param>
+        /// <returns>bool</returns>
         public bool IsIP(string val)
         {
             int i=0;
@@ -46,7 +56,7 @@ namespace whois
             }
             return i==4;
         }
-        
+    //подготовка к запросу    
     public  void doQuery(Object sender, EventArgs e)
     {
         String strResponse, strServer;
@@ -108,7 +118,7 @@ namespace whois
             txtResult.Text = "Lookup failed";
         }
     }
-
+      //запрос к серверу
     public bool DoWhoisLookup(String strDomain, String strServer, out String strResponse)
     {
         strResponse = "none";
